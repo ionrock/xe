@@ -9,6 +9,13 @@ agree that you should use a virtualenv_ and a test runner such as
 pytest_ or nose_. Pip_ is another good tool to use. Sphinx_ is great
 for documentation. The list goes on.
 
+.. _virtualenv: http://virtualenv.org
+.. _pytest: http://pytest.org
+.. _nose: http://nose.readthedocs.org/en/latest/
+.. _pip: http://pip-installer.org
+.. _sphinx: http://sphinx-doc.org
+
+
 The problem is that while we agree on the tools, we seldom agree on
 how we should use the tools. Some people use virtualenvwrapper_ and
 prefer to hide all their virtualenv's in a hidden directory. Others
@@ -18,6 +25,9 @@ does the "Right Thing" with the prompt and uses the project name. Not
 to mention tools like tox_ that help create virtualenvs for different
 versions of Python and make sure your dev environment doesn't mix with
 your test environment.
+
+.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org/en/latest/
+.. _tox: http://tox.readthedocs.org/en/latest/
 
 While I'm positive that I can't bring the Python world together in
 harmony, I can write a tool to make this sort of environment
