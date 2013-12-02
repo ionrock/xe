@@ -15,7 +15,7 @@ def get_args(args):
 def main(args):
     args = get_args(args)
 
-    venv = path(settings.VENV)
+    venv = path(settings['VENV'])
 
     if args.clean and venv.isdir():
         venv.rmtree()

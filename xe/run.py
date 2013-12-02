@@ -5,14 +5,13 @@ from xe.do import run
 
 
 def get_args():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('action')
     return parser.parse_known_args()
 
 
 def find_action(name):
     try:
-        print(name)
         mod = importlib.import_module('xe.cmds.%s' % name, name)
         return mod.main
     except ImportError:
@@ -27,7 +26,9 @@ def main():
         if func:
             func(tail)
         else:
-            cmd = '%s %s' % (args.action, tail or '')
+            tail = ' '.join(tail)
+            cmd = '%s %s' % (args.action, tail)
+            print(cmd)
             run(cmd)
 
 

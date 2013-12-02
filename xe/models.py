@@ -17,12 +17,14 @@ class Requirements(object):
             print('No requirements found!')
             return
 
-        if filename == 'setup.py':
-            env_do('python setup.py develop')
+        if filename.endswith('setup.py'):
+            env_do('pip install -e .')
         else:
             env_do('pip install -r %s' % filename)
 
     def filename(self):
         for name in self.names:
-            result = settings.root().files(name)
-            return result[0]
+            result = settings['root'].files(name)
+            if result:
+                return result[0]
+        return None
