@@ -11,16 +11,24 @@ class Requirements(object):
         'setup.py',
     ]
 
-    def install(self):
+    def install(self, index=None):
         filename = self.filename()
         if not filename:
             print('No requirements found!')
             return
 
+        cmd = 'pip install '
+
+        if index:
+            print('Using index: %s' % index)
+            cmd += '-i %s ' % index
+
         if filename.endswith('setup.py'):
-            env_do('pip install -e .')
+            cmd += '-e .'
         else:
-            env_do('pip install -r %s' % filename)
+            cmd += '-r %s' % filename
+
+        env_do(cmd)
 
     def filename(self):
         for name in self.names:

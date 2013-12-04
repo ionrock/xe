@@ -9,6 +9,8 @@ from xe.models import Requirements
 def get_args(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--clean', action='store_true')
+    parser.add_argument('-i', '--index',
+                        help='The pypi index to use')
     return parser.parse_args(args)
 
 
@@ -24,4 +26,4 @@ def main(args):
 
     # TODO: Allow custom requirement class here
     reqs = Requirements()
-    reqs.install()
+    reqs.install(args.index)
