@@ -28,7 +28,6 @@ def main():
         else:
             tail = ' '.join(tail)
             cmd = '%s %s' % (args.action, tail)
-            print(cmd)
             run(cmd)
 
 
