@@ -39,10 +39,10 @@ class WorkingDirectory(object):
             if start.dirs(d):
                 return start
 
-        if start.parent() == '/':
+        if start.parent == '/':
             raise Exception('No project root found')
 
-        return self.find_root(start.parent())
+        return self.find_root(start.parent)
 
     def settings(self):
         settings = defaults
