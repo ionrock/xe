@@ -1,8 +1,8 @@
 import argparse
 from path import path
 
-from invoke import run
 from xe import settings
+from xe.do import run
 from xe.models import Requirements
 
 
