@@ -7,6 +7,7 @@ from path import path
 defaults = dict(
     VENV='venv',
     TEST_RUNNER='py.test',
+    DJANGO_MANAGE='manage.py',
 )
 
 
@@ -15,6 +16,7 @@ class WorkingDirectory(object):
         'setup.py',
         'requirements.txt',
         'dev_requirements.txt',
+        'devrequirements.txt',
         'Makefile',
     ]
 
