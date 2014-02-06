@@ -12,7 +12,7 @@ setup_params = dict(
         'virtualenv',
         'bumpversion',
         'path.py',
-        'yaml',
+        'pyyaml',
     ],
     entry_points={
         'console_scripts': [
