@@ -9,8 +9,11 @@ def env_do(tail):
 
 
 def run(cmd):
-    activate = path(settings['VENV']) / 'bin' / 'activate_this.py'
-    execfile(activate, dict(__file__=activate))
+    venv = path(settings['VENV'])
+    if venv.exists():
+        activate = venv / 'bin' / 'activate_this.py'
+        execfile(activate, dict(__file__=activate))
+
     try:
         call(cmd, shell=True)
     except KeyboardInterrupt:
