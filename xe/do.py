@@ -5,7 +5,8 @@ from xe import settings
 
 
 def env_do(tail):
-    return run('%s/bin/%s' % (settings['VENV'], tail))
+    tail[0] = '%s/bin/%s' % (settings['VENV'], tail[0])
+    return run(tail)
 
 
 def run(cmd):
