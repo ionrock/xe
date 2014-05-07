@@ -15,6 +15,6 @@ def run(cmd):
         execfile(activate, dict(__file__=activate))
 
     try:
-        call(cmd, shell=True)
+        call(cmd)
     except KeyboardInterrupt:
         pass

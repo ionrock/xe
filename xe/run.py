@@ -1,13 +1,7 @@
-import argparse
+import sys
 import importlib
 
 from xe.do import run
-
-
-def get_args():
-    parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument('action')
-    return parser.parse_known_args()
 
 
 def find_action(name):
@@ -18,17 +12,30 @@ def find_action(name):
         return None
 
 
-def main():
-    args, tail = get_args()
+def get_action():
+    if len(sys.argv) > 1:
+        return sys.argv[1]
 
-    if args.action:
-        func = find_action(args.action)
+
+def get_tail():
+    if len(sys.argv) > 2:
+        return sys.argv[2:]
+    return []
+
+
+def main():
+    action = get_action()
+
+    if not action:
+        sys.exit(0)
+        return
+
+    if action:
+        func = find_action(action)
         if func:
-            func(tail)
+            func(get_tail())
         else:
-            tail = ' '.join(tail)
-            cmd = '%s %s' % (args.action, tail)
-            run(cmd)
+            run(sys.argv[1:])
 
 
 if __name__ == '__main__':
