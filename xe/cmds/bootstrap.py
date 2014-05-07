@@ -22,7 +22,7 @@ def main(args):
     if args.clean and venv.isdir():
         venv.rmtree()
 
-    run('virtualenv %s' % venv)
+    run(['virtualenv', venv.abspath()])
 
     # TODO: Allow custom requirement class here
     reqs = Requirements()

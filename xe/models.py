@@ -17,16 +17,16 @@ class Requirements(object):
             print('No requirements found!')
             return
 
-        cmd = 'pip install '
+        cmd = ['pip', 'install']
 
         if index:
             print('Using index: %s' % index)
-            cmd += '-i %s ' % index
+            cmd.extend(['-i', index])
 
         if filename.endswith('setup.py'):
-            cmd += '-e .'
+            cmd.extend(['-e', '.'])
         else:
-            cmd += '-r %s' % filename
+            cmd.extend(['-r', filename])
 
         env_do(cmd)
 
