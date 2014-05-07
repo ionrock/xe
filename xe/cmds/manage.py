@@ -9,4 +9,6 @@ def main(args):
         print('No manage.py exists in the root directory')
         return
 
-    env_do('python %s %s' % (manage,' '.join(args)))
+    cmd = ['python', manage]
+    cmd.extend(args)
+    env_do(cmd)
