@@ -13,6 +13,7 @@ defaults = dict(
 
 class WorkingDirectory(object):
     ROOT_FILES = [
+        '.xerc'
         'setup.py',
         'requirements.txt',
         'dev_requirements.txt',
