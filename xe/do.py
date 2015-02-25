@@ -15,6 +15,12 @@ def run(cmd):
         activate = venv / 'bin' / 'activate_this.py'
         execfile(activate, dict(__file__=activate))
 
+    ssh = settings['SSH']
+
+    if ssh:
+        cmd = ['ssh'] + ssh.split() + cmd
+
+    print('Running: %s' % cmd)
     try:
         call(cmd)
     except KeyboardInterrupt:

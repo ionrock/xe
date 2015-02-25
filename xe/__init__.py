@@ -8,12 +8,13 @@ defaults = dict(
     VENV='venv',
     TEST_RUNNER='py.test',
     DJANGO_MANAGE='manage.py',
+    SSH=None,
 )
 
 
 class WorkingDirectory(object):
     ROOT_FILES = [
-        '.xerc'
+        '.xerc',
         'setup.py',
         'requirements.txt',
         'dev_requirements.txt',
