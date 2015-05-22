@@ -9,6 +9,7 @@ defaults = dict(
     TEST_RUNNER='py.test',
     DJANGO_MANAGE='manage.py',
     SSH=None,
+    USE_RDO=False,
 )
 
 
