@@ -9,21 +9,22 @@ def env_do(tail):
     return run(tail)
 
 
+def rdo(cmd):
+    # Use rdo for specific commands or ALL commands
+    if cmd[0] in settings['RDO_COMMANDS'] or settings['USE_RDO']:
+        cmd = ['rdo'] + cmd
+    return cmd
+
+
 def run(cmd):
     venv = path(settings['VENV'])
     if venv.exists():
         activate = venv / 'bin' / 'activate_this.py'
         execfile(activate, dict(__file__=activate))
 
-    ssh = settings['SSH']
+    cmd = rdo(cmd)
 
-    if ssh:
-        cmd = ['ssh'] + ssh.split() + cmd
-
-    if settings['USE_RDO']:
-        cmd = ['rdo'] + cmd
-
-    print('Running: %s' % cmd)
+    print('Running: %s' % ' '.join(cmd))
     try:
         call(cmd)
     except KeyboardInterrupt:
