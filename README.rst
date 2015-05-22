@@ -149,4 +149,26 @@ confident your environment will be in place.
 
   $ xe make html
 
-That is it!
+
+Working with Virtual Machines
+-----------------------------
+
+Another concept of an environment is to work on a remote machine or
+virtual machine such as `Vagrant <https://vagrantup.com>`_. `xe`
+supports `rdo <https://rdo.readthedocs.org/en/latest/>`_ for running
+commands on remote machines.
+
+To use `rdo` for all commands, add to your `.xerc`:
+
+.. code-block:: yaml
+
+   USE_RDO: true
+
+If you only want to use `rdo` for specific commands, specify them via
+the `RDO_COMMANDS` field:
+
+.. code-block:: yaml
+
+   RDO_COMMANDS:
+     - make
+     - python
