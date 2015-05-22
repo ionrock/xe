@@ -20,6 +20,9 @@ def run(cmd):
     if ssh:
         cmd = ['ssh'] + ssh.split() + cmd
 
+    if settings['USE_RDO']:
+        cmd = ['rdo'] + cmd
+
     print('Running: %s' % cmd)
     try:
         call(cmd)
