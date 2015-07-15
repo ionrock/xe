@@ -16,15 +16,22 @@ def rdo(cmd):
     return cmd
 
 
+def withenv(cmd):
+    if settings['WITHENV_DEFAULT']:
+        cmd = ['we'] + settings['WITHENV_DEFAULT'].split() + cmd
+    return cmd
+
+
 def run(cmd):
     venv = path(settings['VENV'])
     if venv.exists():
         activate = venv / 'bin' / 'activate_this.py'
         execfile(activate, dict(__file__=activate))
 
+    cmd = withenv(cmd)
     cmd = rdo(cmd)
 
-    print('Running: %s' % ' '.join(cmd))
+    print('Running: %s' % cmd)
     try:
         call(cmd)
     except KeyboardInterrupt:

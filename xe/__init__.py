@@ -10,6 +10,7 @@ defaults = dict(
     DJANGO_MANAGE='manage.py',
     USE_RDO=False,
     RDO_COMMANDS=[],
+    WITHENV_DEFAULT=None,
 )
 
 
