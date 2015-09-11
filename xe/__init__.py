@@ -45,7 +45,7 @@ class WorkingDirectory(object):
             if start.dirs(d):
                 return start
 
-        if start.parent == '/':
+        if start.parent == os.path.abspath(os.sep):
             raise Exception('No project root found')
 
         return self.find_root(start.parent)
