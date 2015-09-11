@@ -1,5 +1,5 @@
 from subprocess import call
-from path import path
+from path import path, Path
 import os
 
 from xe import settings
@@ -7,7 +7,7 @@ from xe import settings
 
 def env_do(tail):
     bin_dir = 'bin' if not os.name == 'nt' else 'Scripts'
-    tail[0] = '%s/%s/%s' % (settings['VENV'], bin_dir, tail[0])
+    tail[0] = Path('%s/%s/%s' % (settings['VENV'], bin_dir, tail[0])).normpath()
     return run(tail)
 
 
