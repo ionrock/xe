@@ -5,9 +5,12 @@ import os
 from xe import settings
 
 
+def bin_dir():
+    return 'Scripts' if os.name == 'nt' else 'bin'
+
+
 def env_do(tail):
-    bin_dir = 'bin' if not os.name == 'nt' else 'Scripts'
-    tail[0] = Path('%s/%s/%s' % (settings['VENV'], bin_dir, tail[0])).normpath()
+    tail[0] = Path('%s/%s/%s' % (settings['VENV'], bin_dir(), tail[0])).normpath()
     return run(tail)
 
 
@@ -27,8 +30,7 @@ def withenv(cmd):
 def run(cmd):
     venv = path(settings['VENV'])
     if venv.exists():
-        bin_dir = 'bin' if not os.name == 'nt' else 'Scripts'
-        activate = venv / bin_dir / 'activate_this.py'
+        activate = venv / bin_dir() / 'activate_this.py'
         execfile(activate, dict(__file__=activate))
 
     cmd = withenv(cmd)
