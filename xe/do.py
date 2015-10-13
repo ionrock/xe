@@ -38,6 +38,6 @@ def run(cmd):
 
     print('Running: %s' % cmd)
     try:
-        call(cmd, shell=(os.name == 'nt'))
+        call(cmd)
     except KeyboardInterrupt:
         pass
