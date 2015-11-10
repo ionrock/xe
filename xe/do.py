@@ -1,11 +1,16 @@
 from subprocess import call
-from path import path
+from path import path, Path
+import os
 
 from xe import settings
 
 
+def bin_dir():
+    return 'Scripts' if os.name == 'nt' else 'bin'
+
+
 def env_do(tail):
-    tail[0] = '%s/bin/%s' % (settings['VENV'], tail[0])
+    tail[0] = Path('%s/%s/%s' % (settings['VENV'], bin_dir(), tail[0])).normpath()
     return run(tail)
 
 
@@ -25,7 +30,7 @@ def withenv(cmd):
 def run(cmd):
     venv = path(settings['VENV'])
     if venv.exists():
-        activate = venv / 'bin' / 'activate_this.py'
+        activate = venv / bin_dir() / 'activate_this.py'
         execfile(activate, dict(__file__=activate))
 
     cmd = withenv(cmd)
