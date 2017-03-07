@@ -1,7 +1,7 @@
 import os
 import yaml
 
-from path import path
+from path import Path
 
 
 defaults = dict(
@@ -30,7 +30,7 @@ class WorkingDirectory(object):
     ]
 
     def __init__(self):
-        self.start = path(os.getcwd())
+        self.start = Path(os.getcwd())
         self._here = None
 
     def find_root(self, start=None):
@@ -52,7 +52,7 @@ class WorkingDirectory(object):
 
     def settings(self):
         settings = defaults
-        settings['root'] = path(self.find_root())
+        settings['root'] = Path(self.find_root())
 
         if settings['root'].files('.xerc'):
             locals = yaml.safe_load(open(settings['root'] / '.xerc'))

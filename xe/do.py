@@ -1,5 +1,5 @@
 from subprocess import call
-from path import path, Path
+from path import Path
 import os
 
 from xe import settings
@@ -28,7 +28,7 @@ def withenv(cmd):
 
 
 def run(cmd):
-    venv = path(settings['VENV'])
+    venv = Path(settings['VENV'])
     if venv.exists():
         activate = venv / bin_dir() / 'activate_this.py'
         execfile(activate, dict(__file__=activate))
